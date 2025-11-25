@@ -3,6 +3,8 @@ EXPOSE 8080
 WORKDIR /opt/server
 COPY payment.ini .
 COPY *.py .
+# Install uWSGI
+RUN pip3 install --no-cache-dir uwsgi
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 ENV CART_HOST="cart" \
