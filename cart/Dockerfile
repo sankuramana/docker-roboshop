@@ -7,5 +7,5 @@ COPY *.js .
 RUN npm install
 ENV REDIS_HOST="redis" \
     CATALOGUE_HOST="catalogue" \
-    CATALOGUE="8080"
+    CATALOGUE_PORT="8080"
 CMD ["node", "server.js"]
