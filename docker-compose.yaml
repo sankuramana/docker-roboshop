@@ -13,9 +13,9 @@ services:
   mysql:
     image: mysql:v1  
     container_name: mysql
-  rabitmq:
-    image: rabitmq:3
-    container_name: rabitmq
+  rabbitmq:
+    image: rabbitmq:3
+    container_name: rabbitmq
     #we set environmet for rabittmq default username and password
     environment:
       RABBITMQ_DEFAULT_USER: roboshop
