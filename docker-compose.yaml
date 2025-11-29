@@ -30,7 +30,7 @@ services:
   cart:
     image: cart:v1
     container_name: cart
-    depebds_on:
+    depends_on:
       - redis
       - catalogue
 
