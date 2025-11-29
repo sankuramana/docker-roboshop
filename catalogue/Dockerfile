@@ -11,8 +11,9 @@ RUN npm install
 #this is fina image
 
 FROM node:20.19.5-alpine3.21 
-WORKDIR /opt/server
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop 
+
+WORKDIR /opt/server
 
 USER roboshop
 COPY --from=build /opt/server /opt/server
