@@ -26,6 +26,14 @@ services:
     depends_on:
       - redis
       - catalogue
+
+  cart:
+    image: cart:v1
+    container_name: cart
+    depebds_on:
+      - redis
+      - catalogue
+
   shipping: 
     image: shipping:v1
     container_name: shipping
