@@ -10,7 +10,7 @@ RUN npm install
 
 
 
-FROM node:20.19.5-alpine3.21 AS build
+FROM node:20.19.5-alpine3.21 
 WORKDIR /opt/server
 COPY --from=build /opt/server /opt/server
 ENV MONGO="true" \
