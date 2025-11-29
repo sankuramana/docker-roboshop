@@ -13,7 +13,7 @@ services:
     image: redis:7.0
     container_name: redis
     volumes:
-      -redis:/data
+      - redis:/data
   mysql:
     image: mysql:v1  
     container_name: mysql
