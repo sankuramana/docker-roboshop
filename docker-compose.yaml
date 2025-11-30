@@ -33,7 +33,7 @@ services:
       RABBITMQ_DEFAULT_PASS: roboshop123
   user:
     build: ./user
-    image: ramanadockerhubuser:v1
+    image: ramanadockerhubuser/user:v1
     container_name: user
     depends_on:
       - mongodb
