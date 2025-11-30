@@ -7,7 +7,6 @@ services:
       - mongodb:/data/db
   catalogue:
     build: ./catalogue
-    context: Dockerfile
     image: catalogue:v1
     container_name: catalogue
     depends_on:
