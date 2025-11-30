@@ -1,96 +1,79 @@
 services:
   mongodb:
-    build: ./mongodb
-    image: ramanadockerhub/mongodb:v1
+    image: mongodb:v1
     container_name: mongodb
     volumes:
       - mongodb:/data/db
-
   catalogue:
-    build:
-      context: ./catalogue
-      dockerfile: Dockerfile
-    image: ramanadockerhub/catalogue:v1
+    image: catalogue:v1
     container_name: catalogue
     depends_on:
       - mongodb
-
   redis:
     image: redis:7.0
     container_name: redis
     volumes:
       - redis:/data
-
   mysql:
-    build: ./mysql
-    image: ramanadockerhub/mysql:v1
+    image: mysql:v1  
     container_name: mysql
     volumes:
       - mysql:/var/lib/mysql
-
   rabbitmq:
     image: rabbitmq:3
     container_name: rabbitmq
     volumes:
       - rabbitmq:/var/lib/rabbitmq
+    #we set environmet for rabittmq default username and password
     environment:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
-
   user:
-    build: ./user
-    image: ramanadockerhub/user:v1
+    image: user:v1
     container_name: user
     depends_on:
       - mongodb
       - redis
 
   cart:
-    build: ./cart
-    image: ramanadockerhub/cart:v1
+    image: cart:v1
     container_name: cart
     depends_on:
       - redis
       - catalogue
 
-  shipping:
-    build: ./shipping
-    image: ramanadockerhub/shipping:v1
+  shipping: 
+    image: shipping:v1
     container_name: shipping
     depends_on:
       - mysql
-      - cart
-
-  payment:
-    build: ./payment
-    image: ramanadockerhub/payment:v1
+      - cart 
+      
+  payment: 
+    image: payment:v1
     container_name: payment
     depends_on:
-      - rabbitmq
-      - cart
+      - catalogue
       - user
-
+      - cart
   frontend:
-    build: ./frontend
-    image: ramanadockerhub/frontend:v1
-    container_name: frontend
-    ports:
+      image: frontend:v1
+      container_name: frontend
+      ports:
       - "80:80"
-    depends_on:
+      depends_on:
       - catalogue
       - user
       - cart
       - shipping
       - payment
-
 volumes:
   mongodb:
-  redis:
   mysql:
+  redis:
   rabbitmq:
-
 networks:
   default:
     driver: bridge
     name: roboshop
-    external: false
+    external: false #true if you are created manuallly
