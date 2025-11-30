@@ -8,7 +8,7 @@ RUN npm install
 
 
 
-#this is fina image
+#this is final image
 
 FROM node:20.19.5-alpine3.21 
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop 
