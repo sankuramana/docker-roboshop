@@ -40,7 +40,8 @@ services:
       - redis
 
   cart:
-    build: ./user
+    build: ./cart
+
     image: ramanadockerhub/cart:v1
     container_name: cart
     depends_on:
@@ -56,7 +57,7 @@ services:
       - cart 
       
   payment: 
-    build: ./shipping
+    build: ./payment
     image: ramanadockerhub/payment:v1
     container_name: payment
     depends_on:
