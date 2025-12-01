@@ -11,9 +11,9 @@ RUN npm install
 #this is final image
 
 FROM node:20.19.5-alpine3.21 
+WORKDIR /opt/server
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop && \ chown -R roboshop:roboshop /opt/server
 
-WORKDIR /opt/server
 COPY --from=build /opt/server /opt/server
 EXPOSE 8080
 LABEL com.project="roboshop" \
