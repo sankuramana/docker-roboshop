@@ -9,23 +9,23 @@ services:
     depends_on:
       - mongodb
 
-  # redis:
-  #   container_name: redis
-  #   volumes:
-  #     - redis:/data
+  redis:
+    container_name: redis
+    volumes:
+      - redis:/data
 
   mysql:
     container_name: mysql
     volumes:
       - mysql:/var/lib/mysql
 
-  # rabbitmq:
-  #   container_name: rabbitmq
-  #   volumes:
-  #     - rabbitmq:/var/lib/rabbitmq
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: roboshop
-  #     RABBITMQ_DEFAULT_PASS: roboshop123
+  rabbitmq:
+    container_name: rabbitmq
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: roboshop
+      RABBITMQ_DEFAULT_PASS: roboshop123
 
   user:
     container_name: user
