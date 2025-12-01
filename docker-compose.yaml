@@ -73,14 +73,14 @@ services:
       - shipping
       - payment
 
-networks:
-  default:
-    driver: bridge
-    name: roboshop
-    external: false
-
 volumes:
   mongodb:
   redis:
   mysql:
   rabbitmq:
+
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: false
